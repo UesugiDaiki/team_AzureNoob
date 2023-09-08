@@ -1,2 +1,1 @@
 # team_AzureNoob
- ハッカソンのやつです
