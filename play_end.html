@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <script src="https://cdn.jsdelivr.net/npm/vue@2.7.11/dist/vue.js"></script>
+        <!-- <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script> -->
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>AzureNoob</title>
+</head>
+<body>
+    <div id="app" class="app">
+        <h1 class="timer">00:00:00</h1>
+        <input type="range" class="form-range" id="customRange1" value="0" v-model="rotate">
+        <div class="main">
+            <div class="calendar">
+                <div class="calendar-bar"></div>
+
+                <!-- <div class="calendar-content"> -->
+                    <!-- <p>{{366 - count}}</p> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <p class="an3-fadedown">お見事</p>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+
+
+
+
+    <style>
+        .an3-fadedown {
+            /* background-color:#ff7f50; */
+            font-size: 35px;
+            font-weight: bold;
+            animation-name: fadedown;
+            animation-duration: 2s;
+            animation-iteration-count: infinite;
+        }
+        @keyframes fadedown {
+        from {
+            opacity: 0;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(20px);
+        }
+        }
+        </style>
+</body>
+</html>
