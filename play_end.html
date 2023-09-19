@@ -20,12 +20,15 @@
 
                 <!-- <div class="calendar-content"> -->
                     <!-- <p>{{366 - count}}</p> -->
+
+                    <p class="an3-fadedown">お見事</p>
+
                 </div>
             </div>
         </div>
     </div>
 
-    <p class="an3-fadedown">お見事</p>
+    
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
@@ -37,11 +40,12 @@
     <style>
         .an3-fadedown {
             /* background-color:#ff7f50; */
-            font-size: 35px;
+            font-size: 70px;
             font-weight: bold;
             animation-name: fadedown;
-            animation-duration: 2s;
-            animation-iteration-count: infinite;
+            animation-duration: 3s;
+            /* animation-iteration-count: infinite; */
+            animation-iteration-count: 1;
         }
         @keyframes fadedown {
         from {
@@ -50,9 +54,19 @@
         }
         to {
             opacity: 1;
-            transform: translateY(20px);
+            transform: translateY(100px);
         }
         }
+        /* @keyframes fadedown {
+        from {
+            opacity: 0;
+            transform: translateY(0);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(100px);
+        }
+        } */
         </style>
 </body>
 </html>
