@@ -41,8 +41,8 @@
 
 /* 上から落ちてくるお見事のcss */
 .fadedown_omigoto {
+    text-align: center;
     font-size: 75px;
-    text-align: auto;
     font-weight: bold;  /* 太字 */
     animation-name: fadedown;
     animation-duration: 2s; /* アニメーションの時間 */
