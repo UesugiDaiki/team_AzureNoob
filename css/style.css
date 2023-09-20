@@ -10,6 +10,13 @@
     text-align: center;
 }
 
+@media (min-width: 768px) {
+    .timer {
+        padding: 0 10rem;
+        text-align: right;
+    }
+}
+
 .main {
     display: flex;
     justify-content: center;
@@ -80,9 +87,12 @@
     font-size: 100px;
 }
 
-@media (min-width: 768px) {
-    .timer {
-        padding: 0 10rem;
-        text-align: right;
-    }
+.v-enter-active,
+.v-leave-active {
+    transition: 0.5s;
+}
+.v-enter,
+.v-leave-to {
+    opacity: 0;
+    transform: translateY(50px)
 }
