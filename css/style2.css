@@ -34,7 +34,7 @@ body {
 }
 
 .timer {
-    padding-right: 10px;
+    padding: 0 10px;
     text-align: center;
 }
 
@@ -113,9 +113,11 @@ body {
 }
 
 /* カレンダーめくりアニメーション */
+.v-enter-active,
 .v-leave-active {
     transition: 0.5s;
 }
+.v-enter,
 .v-leave-to {
     opacity: 0;
     transform: translateY(50px)
