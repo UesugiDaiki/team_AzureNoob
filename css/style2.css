@@ -5,11 +5,14 @@ body {
 }
 
 /* 全体のレイアウト */
+
+/* 親div */
 .parent {
     display: flex;
     height: 100%;
     width: 100%;
 }
+/* 子div */
 .left {
     width: 100%;
 }
@@ -25,14 +28,7 @@ body {
     flex-grow: 3;
 }
 
-.app {
-    height: 100%;
-    width: 100%;
-}
-.app input {
-    margin: 2rem 0 3rem 0;
-}
-
+/* 上に表示するタイマー */
 .timer {
     text-align: right;
     margin: 8px 0;
@@ -40,6 +36,8 @@ body {
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
 }
+
+/* 終了時に表示するタイマー */
 .timer_finish {
     animation: flash 1.5s linear infinite;
     text-align: right;
@@ -149,6 +147,7 @@ body {
 /* 終了後に中央にタイマー表示 */
 #time{
     margin: 20px 0;
+    font-size: 60px;
     text-align: center;
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
@@ -200,5 +199,5 @@ body {
 }
 /* もう一度ボタン */
 .end_button{
-    
+
 }
