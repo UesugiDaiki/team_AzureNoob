@@ -6,11 +6,14 @@ body,
 }
 
 /* 全体のレイアウト */
+
+/* 親div */
 .parent {
     display: flex;
     height: 100%;
     width: 100%;
 }
+/* 子div */
 .left {
     width: 100%;
 }
@@ -25,7 +28,7 @@ body,
     width: 100%;
     flex-grow: 3;
 }
-
+/* 上に表現するタイマー */
 .timer {
     text-align: right;
     margin: 8px 0;
@@ -33,6 +36,7 @@ body,
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
 }
+/* 終了後に表示するタイマー */
 .timer_finish {
     animation: flash 1.5s linear infinite;
     text-align: right;
@@ -144,6 +148,7 @@ body,
 #time{
     margin: 20px 0;
     text-align: center;
+    font-size: 60px;
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
 }
