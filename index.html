@@ -17,8 +17,8 @@
         <div class="main">
             <div class="calendar">
                 <div class="calendar-bar"></div>
-                <div class="calendar-content">
-                    <p>{{366 - count}}</p>
+                <div v-for="i in count" class="calendar-content" v-bind:style="{ zIndex: i }">
+                    <p>{{ 366 - i }}</p>
                 </div>
             </div>
         </div>

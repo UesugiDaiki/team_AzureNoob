@@ -1,4 +1,4 @@
-new Vue( {
+new Vue({
     el: '#app',
     data: {
         rotate: 0,
@@ -25,4 +25,4 @@ new Vue( {
             }
         }
     }
-} )
+})

@@ -1,0 +1,13 @@
+.page {
+    position: absolute;
+    width: 10rem;
+    height: 10rem;
+    text-align: center;
+}
+
+.page1 {
+    z-index: 2;
+}
+.page2 {
+    z-index: 1;
+}

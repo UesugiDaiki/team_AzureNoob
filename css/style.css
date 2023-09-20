@@ -64,10 +64,12 @@
     border-color: rgb(37, 42, 125);
 }
 .calendar-content {
+    position: absolute;
     height: 18rem;
     width: 20rem;
     border: solid 2px;
     border-color: rgb(0, 0, 0);
+    background-color: #FFF;
     display: flex;
     justify-content: center;
     align-items: center;

@@ -4,65 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    <link rel="stylesheet" href="css/test.css">
 </head>
 <body>
-    <style>
-        /*
-        * 表示するときのアニメーション
-        *
-        * .fade-enter-fromは, 表示状態になった直後に消える
-        * .fade-enter-activeは, 表示状態になる直前に付与され, アニメーションが終わると消える
-        * .fade-enter-toは, 表示状態になった直後に付与(同時にfromが消える)され, アニメーションが終わると消える
-        */
-        .fade-enter-active {
-        transition: opacity 1s ease;
-        }
-
-        .fade-enter-from {
-        opacity: 0;
-        }
-
-        .fade-enter-to {
-        color: #f00;
-        }
-
-        /*
-        * 非表示にするときのアニメーション
-        * こちらもアニメーションが終わると消える
-        */
-        .fade-leave-active {
-        transition: opacity 1s ease;
-        }
-
-        .fade-leave-from {
-        opacity: 1;
-        }
-
-        .fade-leave-to {
-        opacity: 0;
-        color: #0f0;
-        }
-    </style>
-
-    <div id="app">
-        <button @click="visible = !visible">表示切り替え</button>
-        <transition name="fade">
-            <p v-if="visible">sample</p>
-        </transition>
+    <div class="container">
+        <div class="page page1">1</div>
+        <div class="page page2">2</div>
     </div>
-
-    <script>
-        const app = Vue.createApp({
-        data() {
-            return {
-            visible: false
-            };
-        }
-        });
-
-        document.addEventListener("DOMContentLoaded", () => {
-        app.mount("#app");
-        });
-    </script>
 </body>
 </html>
