@@ -1,0 +1,122 @@
+html,
+body {
+    height: 100%;
+    width: 100%;
+}
+
+/* 全体のレイアウト */
+.parent {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+.left {
+    width: 100%;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 70rem;
+    flex-grow: 3;
+}
+.right {
+    width: 100%;
+    flex-grow: 3;
+}
+
+.app {
+    height: 100%;
+    width: 100%;
+}
+.app input {
+    margin: 2rem 0 3rem 0;
+}
+
+.timer {
+    padding-right: 10px;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .timer {
+        text-align: right;
+    }
+}
+
+.main {
+    display: flex;
+    justify-content: center;
+}
+
+/* カレンダーデザイン */
+.calendar {
+    height: 20rem;
+}
+.calendar-bar {
+    position: relative;
+    padding: 7px 10px;
+    min-width: 120px;
+    max-width: 100%;
+    color: #555;
+    font-size: 16px;
+    background: #FFF;
+    border: solid 3px #555;
+    box-sizing: border-box;
+}
+.calendar-bar:before {
+    content: "";
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    margin-left: -15px;
+    border: 12px solid transparent;
+    border-bottom: 12px solid #FFF;
+    z-index: 2;
+} 
+.calendar-bar:after {
+    content: "";
+    position: absolute;
+    top: -30px;
+    left: 50%;
+    margin-left: -17px;
+    border: 14px solid transparent;
+    border-bottom: 14px solid #000000;
+    z-index: 1;
+}
+.calendar-bar p {
+    margin: 0;
+    padding: 0;
+}
+.calendar-bar {
+    background-color: rgb(37, 42, 125);
+    height: 2rem;
+    width: 20rem;
+    border: solid 2px;
+    border-color: rgb(37, 42, 125);
+}
+.calendar-content {
+    position: absolute;
+    height: 18rem;
+    width: 20rem;
+    border: solid 2px;
+    border-color: rgb(0, 0, 0);
+    background-color: #FFF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.calendar-content p {
+    margin: auto 0;
+    text-align: center;
+    font-size: 100px;
+}
+
+/* カレンダーめくりアニメーション */
+.v-leave-active {
+    transition: 0.5s;
+}
+.v-leave-to {
+    opacity: 0;
+    transform: translateY(50px)
+}
