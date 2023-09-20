@@ -147,9 +147,13 @@ body,
     0% {
         opacity: 1; /* 透明度 */
     }
+    20%{
+        opacity: 0.9;
+        transform:rotate(-45deg,0deg) skew(10deg, 10deg)
+    }
     100% {
         opacity: 0;
-        transform:translateY(200px) translateX(500px) rotate(-45deg);
+        transform:translateY(200px) translateX(500px) rotate(-45deg) skew(10deg, 10deg);
     }
     /* 80% {
         opacity: 0.4;
