@@ -22,6 +22,11 @@ body,
 /* 子div */
 .left {
     width: 100%;
+
+    /* cursor */
+    cursor:-moz-grab;
+    cursor:-webkit-grab;
+    cursor: grab;
 }
 .center {
     justify-content: center;
@@ -29,10 +34,20 @@ body,
     display: flex;
     width: 70rem;
     flex-grow: 3;
+
+    /* cursor */
+    cursor:-moz-grabbing;
+    cursor:-webkit-grabbing;
+    cursor: grabbing;
 }
 .right {
     width: 100%;
     flex-grow: 3;
+    
+    /* cursor */
+    cursor:-moz-grab;
+    cursor:-webkit-grab;
+    cursor: grab;
 }
 /* 上に表現するタイマー */
 .timer {
