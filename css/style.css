@@ -87,11 +87,9 @@
     font-size: 100px;
 }
 
-.v-enter-active,
 .v-leave-active {
     transition: 0.5s;
 }
-.v-enter,
 .v-leave-to {
     opacity: 0;
     transform: translateY(50px)
