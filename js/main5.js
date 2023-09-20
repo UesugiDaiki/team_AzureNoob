@@ -24,6 +24,7 @@ new Vue({
         timer_css: "timer",
         // ゲームが終了したか
         end: false,
+        reset: false
     },
     watch:{
         count: function () {
@@ -59,25 +60,29 @@ new Vue({
     methods:{
         // カーソルが左のdivにhoverしたとき
         arriveLeft() {
-            if (!this.right_arrived && !this.left_arrived) {
-                this.left_arrived = true;
-            }
-            if (this.count > 0 && this.right_arrived) {
-                this.left_arrived = true;
-                this.right_arrived = false;
-                this.count--;
+            if (!this.reset) {
+                if (!this.right_arrived && !this.left_arrived) {
+                    this.left_arrived = true;
+                }
+                if (this.count > 0 && this.right_arrived) {
+                    this.left_arrived = true;
+                    this.right_arrived = false;
+                    this.count--;
+                }
             }
         },
         // カーソルが右のdivにhoverしたとき
         arriveRight() {
-            if (!this.right_arrived && !this.left_arrived) {
-                this.right_arrived = true;
-            }
-            if (this.count > 0 && this.left_arrived)  {
-                console.log('右');
-                this.left_arrived = false;
-                this.right_arrived = true;
-                this.count--;
+            if (!this.reset) {    
+                if (!this.right_arrived && !this.left_arrived) {
+                    this.right_arrived = true;
+                }
+                if (this.count > 0 && this.left_arrived)  {
+                    console.log('右');
+                    this.left_arrived = false;
+                    this.right_arrived = true;
+                    this.count--;
+                }
             }
         },
         // タイマー表示
@@ -105,11 +110,12 @@ new Vue({
 
         // カレンダー再生成
         async remake_calender(){
-            // for(let i=0; i < 365;i++){
+            this.reset = true;
             for(let j=0; j < 368;j++){
                 this.count++;
                 await sleep(10)
             }
+            this.reset = false;
         },
 
         //値を初期化 
