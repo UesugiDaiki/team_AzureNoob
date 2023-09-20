@@ -69,6 +69,15 @@
     }
 }
 /* もう一度ボタン */
-.end_button{
-
+.end_button {
+    height: 50px;
+    width: 100%;
+    color: #000;
+    font-weight: 700;
+    border-radius: 100vh;
+    background: #fff;
+    font-size: 15px;
+}
+.end_button:hover {
+    background-color: #eee;
 }
