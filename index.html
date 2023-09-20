@@ -13,16 +13,27 @@
 </head>
 <body>
     <div id="app" class="app">
-        <h1 class="timer"id="time">{{time}}</h1>
+        <!-- タイマー -->
+        <h1  v-bind:class=timer_css >{{time}}</h1>
         
 
         <input type="range" class="form-range" id="customRange1" value="0" v-model="rotate">
         <div class="main">
             <div class="calendar">
+                <!-- カレンダーの根本 -->
                 <div class="calendar-bar"></div>
+                <!-- 終了した後に表示するタイマー -->
+                <h1 v-if="end" v-bind:class=end_time id="time">{{time}}</h1>
+                <!-- 上から降りてくるお見事                ↓ 半角スペースの代替文字  -->
+                <p v-if="end" class="fadedown_omigoto">&nbsp;&thinsp;お見事</p>
+                <!-- リスタートボタン -->
+                <button v-if="end" class="end_button">もう一度？</button>
                 <transition-group>
+                    <!-- ちぎるカレンダー生成 -->
                     <div v-for="i in count" class="calendar-content" v-bind:style="{ zIndex: i }" v-bind:key="i">
-                        <p>{{ 366 - i }}</p>
+                        <!-- <p>{{ 366 - i }}</p> -->
+                        <p>{{ 6 - i }}</p>
+                        
                     </div>
                 </transition-group>
             </div>
