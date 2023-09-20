@@ -17,7 +17,7 @@ new Vue({
         stopTime: 0,
         // タイムアウトID
         timeoutID: null,
-        time: '00:00:000',
+        time: '00:00.00',
         // タイマーのcss
         timer_css: "timer",
         // ゲームが終了したか
@@ -79,7 +79,9 @@ new Vue({
             const m = String(current.getMinutes()).padStart(2, '0');
             const s = String(current.getSeconds()).padStart(2, '0');
             const ms = String(current.getMilliseconds()).padStart(3, '0');
-            this.time = `${m}:${s}.${ms}`;
+        
+            // 正規表現
+            this.time = `${m}:${s}.${ms.replace(/\d$/,"")}`;
         },
         // ゲーム終了時の処理
         async game_end(){
@@ -117,7 +119,7 @@ new Vue({
             // タイムアウトID
             this.timeoutID = null;
             // タイマーリセット
-            this.time = '00:00:000';
+            this.time = '00:00.00';
             // タイマーのcss
             this.timer_css = "timer";
             // ゲームが終了したか
