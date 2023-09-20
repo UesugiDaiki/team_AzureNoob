@@ -4,18 +4,23 @@
         animation: flash 1.5s linear infinite;
         padding: 0 10rem;
         text-align: right;
+        font-weight: bold;  /* 太字 */
+        font-family:monospace, serif;
     }
 }
 /* 画面幅が768px以下の場合 */
 .timer_end {
     animation: flash 1.5s linear infinite;
     text-align: right;
+    font-weight: bold;  /* 太字 */
+    font-family:monospace, serif;
 }
 
 /* 終了後に中央にタイマー表示 */
 #time{
-    text-align: auto;
     text-align: center;
+    font-weight: bold;  /* 太字 */
+    font-family:monospace, serif;
 }
 
 
