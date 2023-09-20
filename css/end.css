@@ -1,49 +1,68 @@
-        /* タイマーストップした後点滅するcss */
-        .timer {
-            animation: flash 1.5s linear infinite;
-            margin: 20px;
-        }
+/* タイマーストップした後点滅するcss */
+@media (min-width: 768px) {
+    .timer_end {
+        animation: flash 1.5s linear infinite;
+        padding: 0 10rem;
+        text-align: right;
+    }
+}
+/* 画面幅が768px以下の場合 */
+.timer_end {
+    animation: flash 1.5s linear infinite;
+    text-align: right;
+}
 
-        /* 点滅のアニメーション */
-        @keyframes flash {
-            0%,
-            100% {
-                /* 不透明度 */
-                opacity: 1;
-            }
+/* 終了後に中央にタイマー表示 */
+#time{
+    text-align: auto;
+    text-align: center;
+}
 
-            50% {
-                opacity: 0.3;
-            }
-        }
-        
 
-        /* 上から落ちてくるお見事のcss */
-        .fadedown_omigoto {
-            font-size: 75px;
-            text-align: auto;
-            font-weight: bold;  /* 太字 */
-            animation-name: fadedown;
-            animation-duration: 2s; /* アニメーションの時間 */
-            animation-iteration-count: 1;  /* アニメーションの回数 */
-            /* animation-iteration-count: infinite; */  /* テスト用無限繰り返し */
-            font-family:  serif; 
-        }
-        /* 落ちる動き */
-        @keyframes fadedown {
-            /* 初期位置 */
-            0% {
-                opacity: 0; /* 透明度 */
-                transform: translateY(100px); /* y軸の移動 */
-            }
-            /* 透明状態で上へ移動  */
-            50% {
-                opacity: 0;
-                transform: translateY(-400px);
-            }
-            /* 描画されながら降下  */
-            80% {
-                opacity: 1;
-                transform: translateY(40px);
-            }
-        }
+/* 点滅のアニメーション */
+@keyframes flash {
+    0%,
+    100% {
+        /* 不透明度 */
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+
+/* 上から落ちてくるお見事のcss */
+.fadedown_omigoto {
+    font-size: 75px;
+    text-align: auto;
+    font-weight: bold;  /* 太字 */
+    animation-name: fadedown;
+    animation-duration: 2s; /* アニメーションの時間 */
+    animation-iteration-count: 1;  /* アニメーションの回数 */
+    /* animation-iteration-count: infinite; */  /* テスト用無限繰り返し */
+    font-family:  serif; 
+}
+/* 落ちる動き */
+@keyframes fadedown {
+    /* 初期位置 */
+    0% {
+        opacity: 0; /* 透明度 */
+        transform: translateY(100px); /* y軸の移動 */
+    }
+    /* 透明状態で上へ移動  */
+    50% {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+    /* 描画されながら降下  */
+    80% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+}
+/* もう一度ボタン */
+.end_button{
+
+}
