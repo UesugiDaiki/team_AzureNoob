@@ -34,14 +34,7 @@ body {
 }
 
 .timer {
-    padding: 0 30px;
-    text-align: center;
-}
-
-@media (min-width: 768px) {
-    .timer {
-        text-align: right;
-    }
+    text-align: right;
 }
 
 .main {
