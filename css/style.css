@@ -1,23 +1,21 @@
 html,
-body {
-    height: 100%;
-    width: 100%;
-}
-
+body,
 .app {
     height: 100%;
     width: 100%;
 }
+
 .app input {
     margin: 2rem 0 3rem 0;
 }
 
+/* ウィンドウの横幅768未満のときのタイマーデザイン */
 .timer {
     text-align: center;
     font-family:monospace, serif;
     
 }
-
+/* ウィンドウの横幅768px以上のときのタイマーデザイン */
 @media (min-width: 768px) {
     .timer {
         padding: 0 10rem;
@@ -31,7 +29,7 @@ body {
     justify-content: center;
 }
 
-/*  */
+/* カレンダーデザイン */
 .calendar-bar {
     position: relative;
     padding: 7px 10px;
@@ -43,7 +41,6 @@ body {
     border: solid 3px #555;
     box-sizing: border-box;
 }
-
 .calendar-bar:before {
     content: "";
     position: absolute;
@@ -53,8 +50,7 @@ body {
     border: 12px solid transparent;
     border-bottom: 12px solid #FFF;
     z-index: 2;
-}
-  
+} 
 .calendar-bar:after {
     content: "";
     position: absolute;
@@ -64,14 +60,11 @@ body {
     border: 14px solid transparent;
     border-bottom: 14px solid #000000;
     z-index: 1;
-}
-  
+} 
 .calendar-bar p {
     margin: 0;
     padding: 0;
 }
-/*  */
-
 .calendar-bar {
     background-color: rgb(37, 42, 125);
     height: 2rem;
@@ -96,6 +89,7 @@ body {
     font-size: 100px;
 }
 
+/* 要素の削除、生成アニメーション */
 .v-enter-active,
 .v-leave-active {
     transition: 0.5s;
