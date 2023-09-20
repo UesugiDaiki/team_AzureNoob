@@ -16,7 +16,7 @@
         <!-- タイマー -->
         <h1  v-bind:class=timer_css >{{time}}</h1>
         
-        <input type="range" class="form-range" id="customRange1" value="0" v-model="rotate">
+        <input type="range" class="form-range" id="customRange1" v-bind:value=range_value v-model="rotate">
         <div class="main">
             <div class="calendar">
                 <!-- カレンダーの根本 -->
@@ -26,7 +26,7 @@
                 <!-- 上から降りてくるお見事                ↓ 半角スペースの代替文字  -->
                 <p v-if="end" class="fadedown_omigoto">&nbsp;&thinsp;お見事</p>
                 <!-- リスタートボタン -->
-                <button v-if="end" class="end_button" v-on:click="remake_calender">もう一度？</button>
+                <button v-if="end" class="end_button" v-on:click="remake_game">もう一度？</button>
                 <transition-group>
                     <!-- ちぎるカレンダー生成 -->
                     <div v-for="i in count" class="calendar-content" v-bind:style="{ zIndex: i }" v-bind:key="i">
