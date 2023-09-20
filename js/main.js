@@ -41,15 +41,14 @@ new Vue({
                 };
                 this.timeoutID = window.setInterval(onInterval,10)
             }
+            if(this.count == 0){
+                this.stopTime=new Date();
+                clearInterval(this.timeoutID)
+                this.timeoutID = null
+            }
         }
     },
     methods:{
-
-        stop() {
-            this.stopTime=new Date();
-            clearInterval(this.timeoutID)
-            this.timeoutID = null
-        },
         displayTime() {
             const now = new Date();
             const ellapsed = now.getTime() - this.startTime.getTime();
