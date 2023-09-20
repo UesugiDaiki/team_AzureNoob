@@ -27,7 +27,7 @@
                 <!-- 上から降りてくるお見事                ↓ 半角スペースの代替文字  -->
                 <p v-if="end" class="fadedown_omigoto">&nbsp;&thinsp;お見事</p>
                 <!-- リスタートボタン -->
-                <button v-if="end" class="end_button">もう一度？</button>
+                <button v-if="end" class="end_button" v-on:click="remake_calender">もう一度？</button>
                 <transition-group>
                     <!-- ちぎるカレンダー生成 -->
                     <div v-for="i in count" class="calendar-content" v-bind:style="{ zIndex: i }" v-bind:key="i">
