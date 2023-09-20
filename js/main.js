@@ -4,10 +4,11 @@ new Vue({
         rotate: 0,
         left_arrived: true,
         right_arrived: false,
+        // ページ数
         // count: 365,
         count: 5,
-        print: "1",
-
+        // レンジの初期値
+        range_value: "0",
         // タイマー
         start: null,
         // 開始時間
@@ -25,14 +26,14 @@ new Vue({
     watch:{
         rotate: function(newValue) {
             // 左から右
-            if(this.left_arrived && newValue == 100){
+            if(this.count > 0 && this.left_arrived && newValue == 100){
                 this.left_arrived = false;
                 this.right_arrived = true;
                 this.count -= 1;
                 // ページが破られる処理を書く
             }
             // 右から左
-            if(this.right_arrived && newValue == 0){
+            if(this.count > 0 && this.right_arrived && newValue == 0){
                 this.left_arrived = true;
                 this.right_arrived = false;
                 this.count -= 1;
@@ -69,10 +70,54 @@ new Vue({
             this.time = `${m}:${s}.${ms}`;
         },
         // ゲーム終了時の処理
-        game_end(){
+        async game_end(){
             this.timer_css = "timer_end";
+            await sleep(500)
             this.end = true;
+        },
 
+        //ゲーム再起動   
+        remake_game(){
+            this.reset_value();
+            this.remake_calender();
+        },
+
+        // カレンダー再生成
+        async remake_calender(){
+            // for(let i=0; i < 365;i++){
+            for(let j=0; j < 5;j++){
+                this.count++;
+                await sleep(10)
+            }
+        },
+
+        //値を初期化 
+        reset_value(){
+        // タイマー
+        this.start = null;
+        // 開始時間
+        this.startTime = 0;
+        // 停止時間
+        this.stopTime = 0;
+        // タイムアウトID
+        this.timeoutID = null;
+        // タイマーリセット
+        this.time = '00:00:000';
+        // タイマーのcss
+        this.timer_css = "timer";
+        // レンジの初期値
+        this.range_value = "0",
+        // ゲームが終了したか
+        this.end = false;
         },
     },
 })
+
+/**
+ * 処理を一定時間停止する
+ *
+ * 参考サイト:https://note.affi-sapo-sv.com/js-sleep.php
+ * @param {number} waitTime
+ */
+
+var sleep = waitTime => new Promise(resolve => setTimeout(resolve, waitTime))
