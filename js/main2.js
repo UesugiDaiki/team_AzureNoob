@@ -26,7 +26,8 @@ new Vue({
     watch:{
         count: function () {
             // タイマースタート
-            if(this.start == null){
+            // arriveLeft,arriveRightでstartのnullをtrueに
+            if(this.start == true){
                 this.start = false;
                 this.startTime=new Date()
                 const onInterval = ()=>{
@@ -50,6 +51,8 @@ new Vue({
             console.log('左');
             if (!this.right_arrived && !this.left_arrived) {
                 this.left_arrived = true;
+                // タイマートリガー
+                this.start = true;
             }
             if (this.count > 0 && this.right_arrived) {
                 console.log('左');
@@ -63,6 +66,8 @@ new Vue({
             console.log('右');
             if (!this.right_arrived && !this.left_arrived) {
                 this.right_arrived = true;
+                // タイマートリガー
+                this.start = true;
             }
             if (this.count > 0 && this.left_arrived)  {
                 console.log('右');
