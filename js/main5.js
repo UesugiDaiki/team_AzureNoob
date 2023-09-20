@@ -28,11 +28,9 @@ new Vue({
     watch:{
         count: function () {
             // スタート前
-            if (this.count == 367) {
-                this.display_num = 2;
-            }
-            if (this.count == 366) {
-                this.display_num = 1;
+            if (this.count > 365) {
+                this.display_css = 'before-starting';
+                this.display_num = this.count - 365;
             }
             // スタート後
             if (this.count <= 365) {
@@ -116,8 +114,6 @@ new Vue({
 
         //値を初期化 
         reset_value(){
-            this.display_num = 3;
-            this.display_css = 'before-starting';
             // カーソル位置
             this.left_arrived = false;
             this.right_arrived = false;

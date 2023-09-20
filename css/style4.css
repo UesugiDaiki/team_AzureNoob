@@ -1,3 +1,9 @@
+html{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
 html,
 body,
 .app {
@@ -119,13 +125,42 @@ body,
 .v-leave-active {
     transition: 0.5s;
 }
-.v-enter,
-.v-leave-to {
+.v-enter {
     opacity: 0;
+    transform: translateY(100px);
 }
 .v-leave-to[data-state="true"] {
     opacity: 0;
-    transform: translate(50px, 50px);
+    animation-name: falling_paper_left;
+    animation-duration: 1s; /* アニメーションの時間 */
+    animation-iteration-count: 1;  /* アニメーションの回数 */
+}
+.v-leave-to[data-state="false"] {
+    opacity: 0;
+    animation-name: falling_paper_right;
+    animation-duration: 1s; /* アニメーションの時間 */
+    animation-iteration-count: 1;  /* アニメーションの回数 */
+}
+/* めくるアニメーション */
+@keyframes falling_paper_right {
+    /* 初期位置 */
+    0% {
+        opacity: 1; /* 透明度 */
+    }
+    100% {
+        opacity: 0;
+        transform:translateY(200px) translateX(500px) rotate(-45deg);
+    }
+}
+@keyframes falling_paper_left {
+    /* 初期位置 */
+    0% {
+        opacity: 1; /* 透明度 */
+    }
+    100% {
+        opacity: 0;
+        transform:translateY(200px) translateX(-500px) rotate(45deg);
+    }
 }
 .v-leave-to[data-state="false"] {
     opacity: 0;
@@ -154,7 +189,6 @@ body,
 #time{
     margin: 20px 0;
     text-align: center;
-    font-size: 60px;
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
 }
@@ -176,8 +210,8 @@ body,
 
 /* 上から落ちてくるお見事のcss */
 .fadedown_omigoto {
+    text-align: center;
     font-size: 75px;
-    text-align: auto;
     font-weight: bold;  /* 太字 */
     animation-name: fadedown;
     animation-duration: 2s; /* アニメーションの時間 */
