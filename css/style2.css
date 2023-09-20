@@ -1,5 +1,6 @@
 html,
-body {
+body,
+.app {
     height: 100%;
     width: 100%;
 }
@@ -23,14 +24,6 @@ body {
 .right {
     width: 100%;
     flex-grow: 3;
-}
-
-.app {
-    height: 100%;
-    width: 100%;
-}
-.app input {
-    margin: 2rem 0 3rem 0;
 }
 
 .timer {
