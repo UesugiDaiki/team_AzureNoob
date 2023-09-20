@@ -19,7 +19,7 @@ new Vue({
         stopTime: 0,
         // タイムアウトID
         timeoutID: null,
-        time: '00:00:000',
+        time: '00:00.00',
         // タイマーのcss
         timer_css: "timer",
         // ゲームが終了したか
@@ -39,7 +39,8 @@ new Vue({
                 this.display_css = 'after-starting';
             }
             // タイマースタート
-            if(this.start == null && this.count <= 365){
+            // arriveLeft,arriveRightでstartのnullをtrueに
+            if(this.start == true && this.count <= 365 && !this.reset){
                 this.start = false;
                 this.startTime=new Date()
                 const onInterval = ()=>{
@@ -63,6 +64,8 @@ new Vue({
             if (!this.reset) {
                 if (!this.right_arrived && !this.left_arrived) {
                     this.left_arrived = true;
+                    // タイマートリガー
+                    this.start = true;
                 }
                 if (this.count > 0 && this.right_arrived) {
                     this.left_arrived = true;
@@ -73,9 +76,11 @@ new Vue({
         },
         // カーソルが右のdivにhoverしたとき
         arriveRight() {
-            if (!this.reset) {    
+            if (!this.reset) {
                 if (!this.right_arrived && !this.left_arrived) {
                     this.right_arrived = true;
+                    // タイマートリガー
+                    this.start = true;
                 }
                 if (this.count > 0 && this.left_arrived)  {
                     console.log('右');
@@ -93,7 +98,7 @@ new Vue({
             const m = String(current.getMinutes()).padStart(2, '0');
             const s = String(current.getSeconds()).padStart(2, '0');
             const ms = String(current.getMilliseconds()).padStart(3, '0');
-            this.time = `${m}:${s}.${ms}`;
+            this.time = `${m}:${s}.${ms.replace(/\d$/,"")}`;
         },
         // ゲーム終了時の処理
         async game_end(){
@@ -132,7 +137,7 @@ new Vue({
             // タイムアウトID
             this.timeoutID = null;
             // タイマーリセット
-            this.time = '00:00:000';
+            this.time = '00:00.00';
             // タイマーのcss
             this.timer_css = "timer";
             // ゲームが終了したか
