@@ -81,3 +81,9 @@
 .end_button:hover {
     background-color: #eee;
 }
+.before-starting {
+    color: red;
+}
+.after-starting {
+    color: #000;
+}

@@ -126,6 +126,7 @@ body {
 .v-leave-to {
     opacity: 0;
     transform: translateY(50px)
+    
 }
 
 /* タイマーストップした後点滅するcss */
@@ -200,5 +201,5 @@ body {
 }
 /* もう一度ボタン */
 .end_button{
-    
+
 }
