@@ -18,6 +18,7 @@
 
 /* 終了後に中央にタイマー表示 */
 #time{
+    margin: 20px 0;
     text-align: center;
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
