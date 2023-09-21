@@ -147,9 +147,6 @@ body,
     0% {
         opacity: 1; /* 透明度 */
     }
-    2%{
-        transform: translateX(20px);
-    }
     20%{
         opacity: 0.9;
         transform:translateX(20px) rotate(-45deg,0deg) skew(10deg, 10deg)
