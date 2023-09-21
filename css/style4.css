@@ -161,10 +161,15 @@ body,
     /* 初期位置 */
     0% {
         opacity: 1; /* 透明度 */
+        transform: translate(0, 0)
+    }
+    20%{
+        opacity: 0.9;
+        transform:rotate(-45deg,0deg) skew(10deg, 10deg)
     }
     100% {
         opacity: 0;
-        transform:translateY(200px) translateX(500px) rotate(-45deg);
+        transform:translateY(200px) translateX(500px) rotate(-45deg) skew(10deg, 10deg);
     }
 }
 @keyframes falling_paper_left {
@@ -172,9 +177,13 @@ body,
     0% {
         opacity: 1; /* 透明度 */
     }
+    20%{
+        opacity: 0.9;
+        transform:rotate(0deg,-45deg) skew(10deg, 10deg)
+    }
     100% {
         opacity: 0;
-        transform:translateY(200px) translateX(-500px) rotate(45deg);
+        transform:translateY(200px) translateX(-500px) rotate(45deg) skew(-10deg, -10deg);
     }
 }
 .v-leave-to[data-state="false"] {
