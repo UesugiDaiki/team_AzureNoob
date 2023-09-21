@@ -2,15 +2,13 @@ new Vue({
     el: '#app',
     data: {
         rotate: 0,
-        left_arrived: false,
-        right_arrived: false,
+        leftArrived: false,
+        rightArrived: false,
         // ページ数
         count: 368,
         // count: 5,
-        display_num: 3,
-        display_css: 'before-starting',
-        // レンジの初期値
-        range_value: "0",
+        displayNum: 3,
+        displayCss: 'before-starting',
         // タイマー
         start: null,
         // 開始時間
@@ -21,7 +19,7 @@ new Vue({
         timeoutID: null,
         time: '00:00.00',
         // タイマーのcss
-        timer_css: "timer",
+        timerCss: "timer",
         // ゲームが終了したか
         end: false,
         reset: false
@@ -30,13 +28,13 @@ new Vue({
         count: function () {
             // スタート前
             if (this.count > 365) {
-                this.display_css = 'before-starting';
-                this.display_num = this.count - 365;
+                this.displayCss = 'before-starting';
+                this.displayNum = this.count - 365;
             }
             // スタート後
             if (this.count <= 365) {
-                this.display_num = 366 - this.count;
-                this.display_css = 'after-starting';
+                this.displayNum = 366 - this.count;
+                this.displayCss = 'after-starting';
             }
             // タイマースタート
             // arriveLeft,arriveRightでstartのnullをtrueに
@@ -51,7 +49,7 @@ new Vue({
             // 枚数が0になった時タイマーストップ
             if(this.count == 0){
                 // ゲーム終了時の処理を呼び出し
-                this.game_end()
+                this.gameEnd()
                 this.stopTime=new Date();
                 clearInterval(this.timeoutID)
                 this.timeoutID = null
@@ -70,14 +68,14 @@ new Vue({
         // カーソルが左のdivにhoverしたとき
         arriveLeft() {
             if (!this.reset) {
-                if (!this.right_arrived && !this.left_arrived) {
-                    this.left_arrived = true;
+                if (!this.rightArrived && !this.leftArrived) {
+                    this.leftArrived = true;
                     // タイマートリガー
                     this.start = true;
                 }
-                if (this.count > 0 && this.right_arrived) {
-                    this.left_arrived = true;
-                    this.right_arrived = false;
+                if (this.count > 0 && this.rightArrived) {
+                    this.leftArrived = true;
+                    this.rightArrived = false;
                     this.count--;
                 }
             }
@@ -85,14 +83,14 @@ new Vue({
         // カーソルが右のdivにhoverしたとき
         arriveRight() {
             if (!this.reset) {
-                if (!this.right_arrived && !this.left_arrived) {
-                    this.right_arrived = true;
+                if (!this.rightArrived && !this.leftArrived) {
+                    this.rightArrived = true;
                     // タイマートリガー
                     this.start = true;
                 }
-                if (this.count > 0 && this.left_arrived)  {
-                    this.left_arrived = false;
-                    this.right_arrived = true;
+                if (this.count > 0 && this.leftArrived)  {
+                    this.leftArrived = false;
+                    this.rightArrived = true;
                     this.count--;
                 }
             }
@@ -108,20 +106,20 @@ new Vue({
             this.time = `${m}:${s}.${ms.replace(/\d$/,"")}`;
         },
         // ゲーム終了時の処理
-        async game_end(){
-            this.timer_css = "timer_finish";
+        async gameEnd(){
+            this.timerCss = "timer_finish";
             await sleep(530)
             this.end = true;
         },
 
         //ゲーム再起動   
-        remake_game(){
-            this.remake_calender();
-            this.reset_value();
+        remakeGame(){
+            this.remakeCalendar();
+            this.resetValue();
         },
 
         // カレンダー再生成
-        async remake_calender(){
+        async remakeCalendar(){
             this.reset = true;
             for(let j=0; j < 368;j++){
                 this.count++;
@@ -131,10 +129,10 @@ new Vue({
         },
 
         //値を初期化 
-        reset_value(){
+        resetValue(){
             // カーソル位置
-            this.left_arrived = false;
-            this.right_arrived = false;
+            this.leftArrived = false;
+            this.rightArrived = false;
             // タイマー
             this.start = null;
             // 開始時間
@@ -146,7 +144,7 @@ new Vue({
             // タイマーリセット
             this.time = '00:00.00';
             // タイマーのcss
-            this.timer_css = "timer";
+            this.timerCss = "timer";
             // ゲームが終了したか
             this.end = false;
         },
