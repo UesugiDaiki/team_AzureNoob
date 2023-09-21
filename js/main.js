@@ -56,6 +56,14 @@ new Vue({
                 clearInterval(this.timeoutID)
                 this.timeoutID = null
             }
+        },
+        // timeのoverflow対策
+        time: function() {
+            if(this.time >= "59:59.99"){
+                this.stopTime=new Date();
+                clearInterval(this.timeoutID)
+                this.timeoutID = null
+            }
         }
     },
     methods:{
@@ -83,7 +91,6 @@ new Vue({
                     this.start = true;
                 }
                 if (this.count > 0 && this.left_arrived)  {
-                    console.log('右');
                     this.left_arrived = false;
                     this.right_arrived = true;
                     this.count--;
