@@ -1,3 +1,9 @@
+html{
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
 html,
 body,
 .app {
@@ -5,24 +11,60 @@ body,
     width: 100%;
 }
 
-.app input {
-    margin: 2rem 0 3rem 0;
-}
+/* 全体のレイアウト */
 
-/* ウィンドウの横幅768未満のときのタイマーデザイン */
+/* 親div */
+.parent {
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+/* 子div */
+.left {
+    width: 100%;
+    background-color: #f2f2f2;
+    /* cursor */
+    cursor:-moz-grab;
+    cursor:-webkit-grab;
+    cursor: grab;
+}
+.center {
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    width: 70rem;
+    flex-grow: 3;
+
+    /* cursor */
+    cursor:-moz-grabbing;
+    cursor:-webkit-grabbing;
+    cursor: grabbing;
+}
+.right {
+    width: 100%;
+    flex-grow: 3;
+    background-color: #f2f2f2;
+    /* cursor */
+    cursor:-moz-grab;
+    cursor:-webkit-grab;
+    cursor: grab;
+}
+/* 上に表現するタイマー */
 .timer {
-    text-align: center;
+    text-align: right;
+    margin: 8px 0;
+    padding: 0 30px;
     font-weight: bold;  /* 太字 */
     font-family:monospace, serif;
-    
 }
-/* ウィンドウの横幅768px以上のときのタイマーデザイン */
-@media (min-width: 768px) {
-    .timer {
-        padding: 0 10rem;
-        text-align: right;
-        font-family:monospace, serif;
-    }
+/* 終了後に表示するタイマー */
+.timer_finish {
+    animation: flash 1.5s linear infinite;
+    text-align: right;
+    margin: 8px 0;
+    padding: 0 30px;
+    font-weight: bold;  /* 太字 */
+    font-family:monospace, serif;
 }
 
 .main {
@@ -31,6 +73,9 @@ body,
 }
 
 /* カレンダーデザイン */
+.calendar {
+    height: 20rem;
+}
 .calendar-bar {
     position: relative;
     padding: 7px 10px;
@@ -61,7 +106,7 @@ body,
     border: 14px solid transparent;
     border-bottom: 14px solid #000000;
     z-index: 1;
-} 
+}
 .calendar-bar p {
     margin: 0;
     padding: 0;
@@ -90,13 +135,148 @@ body,
     font-size: 100px;
 }
 
-/* 要素の削除、生成アニメーション */
+/* カレンダーめくりアニメーション */
 .v-enter-active,
 .v-leave-active {
     transition: 0.5s;
 }
-.v-enter,
-.v-leave-to {
+.v-enter {
     opacity: 0;
-    transform: translateY(50px)
+    transform: translateY(100px);
+}
+.v-leave-to[data-state="true"] {
+    opacity: 0;
+    animation-name: falling_paper_left;
+    animation-duration: 1s; /* アニメーションの時間 */
+    animation-iteration-count: 1;  /* アニメーションの回数 */
+}
+.v-leave-to[data-state="false"] {
+    opacity: 0;
+    animation-name: falling_paper_right;
+    animation-duration: 1s; /* アニメーションの時間 */
+    animation-iteration-count: 1;  /* アニメーションの回数 */
+}
+/* めくるアニメーション */
+@keyframes falling_paper_right {
+    /* 初期位置 */
+    0% {
+        opacity: 1; /* 透明度 */
+        transform: translate(0, 0)
+    }
+    20%{
+        opacity: 0.9;
+        transform:rotate(-45deg,0deg) skew(10deg, 10deg)
+    }
+    100% {
+        opacity: 0;
+        transform:translateY(200px) translateX(500px) rotate(-45deg) skew(10deg, 10deg);
+    }
+}
+@keyframes falling_paper_left {
+    /* 初期位置 */
+    0% {
+        opacity: 1; /* 透明度 */
+    }
+    20%{
+        opacity: 0.9;
+        transform:rotate(0deg,-45deg) skew(10deg, 10deg)
+    }
+    100% {
+        opacity: 0;
+        transform:translateY(200px) translateX(-500px) rotate(45deg) skew(-10deg, -10deg);
+    }
+}
+.v-leave-to[data-state="false"] {
+    opacity: 0;
+    transform: translate(-50px, 50px);
+}
+
+/* タイマーストップした後点滅するcss */
+@media (min-width: 768px) {
+    .timer_end {
+        animation: flash 1.5s linear infinite;
+        padding: 0 10rem;
+        text-align: right;
+        font-weight: bold;  /* 太字 */
+        font-family:monospace, serif;
+    }
+}
+/* 画面幅が768px以下の場合 */
+.timer_end {
+    animation: flash 1.5s linear infinite;
+    text-align: right;
+    font-weight: bold;  /* 太字 */
+    font-family:monospace, serif;
+}
+
+/* 終了後に中央にタイマー表示 */
+#time{
+    margin: 20px 0;
+    text-align: center;
+    font-weight: bold;  /* 太字 */
+    font-family:monospace, serif;
+}
+
+
+/* 点滅のアニメーション */
+@keyframes flash {
+    0%,
+    100% {
+        /* 不透明度 */
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
+}
+
+
+/* 上から落ちてくるお見事のcss */
+.fadedown_omigoto {
+    text-align: center;
+    font-size: 75px;
+    font-weight: bold;  /* 太字 */
+    animation-name: fadedown;
+    animation-duration: 2s; /* アニメーションの時間 */
+    animation-iteration-count: 1;  /* アニメーションの回数 */
+    /* animation-iteration-count: infinite; */  /* テスト用無限繰り返し */
+    font-family:  serif; 
+}
+/* 落ちる動き */
+@keyframes fadedown {
+    /* 初期位置 */
+    0% {
+        opacity: 0; /* 透明度 */
+        transform: translateY(100px); /* y軸の移動 */
+    }
+    /* 透明状態で上へ移動  */
+    50% {
+        opacity: 0;
+        transform: translateY(-400px);
+    }
+    /* 描画されながら降下  */
+    80% {
+        opacity: 1;
+        transform: translateY(40px);
+    }
+}
+/* もう一度ボタン */
+.end_button {
+    height: 50px;
+    width: 100%;
+    color: #000;
+    font-weight: 700;
+    border-radius: 100vh;
+    background: #fff;
+    font-size: 15px;
+}
+.end_button:hover {
+    background-color: #eee;
+}
+.before-starting {
+    color: red;
+}
+.after-starting {
+    color: #000;
 }
